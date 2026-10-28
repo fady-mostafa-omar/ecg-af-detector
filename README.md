@@ -8,7 +8,9 @@ recordings from 45 patients the model never saw.
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fady-mostafa-omar/ecg-af-detector/blob/main/notebooks/ecg_af_detector.ipynb)
 [![CI](https://github.com/fady-mostafa-omar/ecg-af-detector/actions/workflows/ci.yml/badge.svg)](https://github.com/fady-mostafa-omar/ecg-af-detector/actions/workflows/ci.yml)
 
-<img src="results/af_timelines_mitdb.png" alt="AF according to the cardiologists and the model, unseen MIT-BIH patients">
+| Basic: for anyone | Advanced: for clinicians and researchers |
+|---|---|
+| <img src="docs/screenshots/basic.png" alt="Basic tab"> | <img src="docs/screenshots/advanced.png" alt="Advanced tab"> |
 
 ## The app
 
@@ -23,7 +25,7 @@ Pick a bundled example or upload your own single-lead ECG (CSV, any sampling rat
 - **Examples (none used for training):** MIT-BIH 202 · 30 min · paroxysmal AF (episodes); MIT-BIH 210 · 30 min · AF throughout; MIT-BIH 100 · 30 min · normal rhythm; MIT-BIH 200 · 30 min · many extra beats, no AF (a known false-alarm case); AF Database 04043 · 1-h excerpt from 5:35 · AF episodes; CinC 2017 test A00002 · 30 s · expert label: Normal rhythm; CinC 2017 test A00067 · 30 s · expert label: Atrial fibrillation; CinC 2017 test A00013 · 30 s · expert label: Other abnormal rhythm; CinC 2017 test A00022 · 30 s · expert label: Too noisy.
 
 **Try it:** open the [Colab notebook](https://colab.research.google.com/github/fady-mostafa-omar/ecg-af-detector/blob/main/notebooks/ecg_af_detector.ipynb) and run sections 0 and 1. It prints a temporary public link to the
-app, which stays active while that cell runs.
+app, which stays active while that cell runs. If the link cannot be created (Gradio's link service is sometimes down), run the notebook's next cell instead: it opens the app through Colab.
 
 ## Problem
 
@@ -126,6 +128,10 @@ Baseline feature set, chosen by 5-fold cross-validation on the training part (me
 Re-running `scripts/baseline.py` in a later Colab session gave CV scores within 0.003 of these, picked "All features, class-balanced", and scored 0.814 on the test set (files in `results/history/`). The shipped baseline is the original run above.
 
 ### External test: long Holter recordings from other patients and devices
+
+<img src="results/af_timelines_mitdb.png" alt="AF according to the cardiologists and the model, unseen MIT-BIH patients">
+
+*Upper bar: cardiologists; lower bar: the model, window by window. Shown: the unseen MIT-BIH patients with AF, and those without AF for whom the model reported AF more than 10% of the time.*
 
 Rules fixed before looking at the results: every 30-s window (15-s step) is compared with the cardiologists' rhythm
 annotations; a window is AF if more than half of it is annotated AF; atrial flutter and all other rhythms count as
