@@ -1,0 +1,4 @@
+model,CV score,F1 Normal,F1 AF,F1 Other,F1 Noisy
+RR features only,0.768 ± 0.021,0.882,0.743,0.68,0.485
+All features,0.813 ± 0.013,0.901,0.799,0.739,0.634
+"All features, class-balanced",0.809 ± 0.012,0.895,0.802,0.73,0.629

@@ -1,0 +1,10 @@
+{
+  "members": 5,
+  "parameters_per_member": 820516,
+  "parameters_total": 4102580,
+  "model_file_MB": 16.7,
+  "cpu_threads": 2,
+  "ms_per_30s_window_cpu_network_only": 16.5,
+  "s_per_30min_ecg_cpu_full_pipeline": 6.2,
+  "windows_in_30min": 119
+}

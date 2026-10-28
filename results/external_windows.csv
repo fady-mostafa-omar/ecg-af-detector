@@ -1,0 +1,5 @@
+database,model,windows,AF windows,Se %,PPV %,Specificity %,F1 %,called Noisy %
+MIT-BIH DS2,CNN ensemble,2640,377,93.9,75.2,94.8,83.5,0.1
+MIT-BIH DS2,Gradient boosting,2640,377,98.1,73.9,94.2,84.3,0.1
+MIT-BIH AF DB,CNN ensemble,56207,22402,93.7,97.2,98.2,95.4,0.6
+MIT-BIH AF DB,Gradient boosting,56207,22402,90.2,97.9,98.7,93.9,0.2

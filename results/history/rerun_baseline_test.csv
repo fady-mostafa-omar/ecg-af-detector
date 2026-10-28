@@ -1,0 +1,2 @@
+model,test score,F1 Normal,F1 AF,F1 Other,F1 Noisy
+"All features, class-balanced",0.8138,0.9001,0.8136,0.7277,0.6667

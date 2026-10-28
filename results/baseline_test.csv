@@ -1,0 +1,2 @@
+model,test score,F1 Normal,F1 AF,F1 Other,F1 Noisy
+All features,0.8116,0.8986,0.8166,0.7196,0.6931

@@ -5,3 +5,6 @@ data/
 *.ckpt
 *.pt
 .env
+!models/afnet_ensemble.pt
+.gradio/
+flagged/

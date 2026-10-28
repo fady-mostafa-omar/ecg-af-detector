@@ -1,1 +1,37 @@
-seed: 42
+# All paths are relative to the repository root.
+cinc_dir: data/cinc2017                 # PhysioNet/CinC Challenge 2017 training set (scripts/download_data.sh)
+mitdb_dir: data/mitdb                   # MIT-BIH Arrhythmia Database (external test)
+afdb_dir: data/afdb                     # MIT-BIH Atrial Fibrillation Database (external test)
+labels: REFERENCE-v3.csv                # final labels released by the organizers (8,528 recordings)
+dataset: data/cinc2017.npz              # written by scripts/build_dataset.py
+split: splits/cinc2017_split.csv        # the locked split (shipped; build_dataset.py checks it)
+peaks: data/peaks.npz                   # written by scripts/extract_features.py
+features: data/features.csv
+windows: data/windows.npz
+window_features: data/window_features.csv
+external_cache: data/external           # per-record predictions on the external data (scripts/external_test.py)
+baseline_model: models/baseline_hgb.joblib
+model: models/afnet_ensemble.pt         # shipped 5-seed ensemble
+seed_dir: data/cnn_seeds                # one checkpoint per seed while training (a re-run resumes)
+results: results
+
+# Split (used only if splits/cinc2017_split.csv is missing)
+test_size: 0.2
+split_seed: 2017
+n_folds: 5
+fold_seed: 0
+
+# Baseline: gradient boosting on 35 recording features; the feature set is chosen by 5-fold CV on the training part
+baseline: {max_iter: 300, learning_rate: 0.05, random_state: 0}
+
+# Hybrid CNN: trained on folds 1-4; fold 0 chooses the epoch (best mean F1 of all four classes)
+seeds: [0, 1, 2, 3, 4]
+epochs: 30
+batch_size: 64
+learning_rate: 0.001
+val_fold: 0
+
+# Evaluation
+bootstrap: 2000                         # paired bootstrap resamples of the test recordings
+bootstrap_seed: 0
+af_window_threshold: 0.5                # external test: a 30-s window is AF if more than half of it is annotated AF
